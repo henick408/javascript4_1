@@ -19,7 +19,21 @@ app.get('/math/circle/:r', (req, res) => {
   res.json(result); 
 });
 
-//TODO2
+app.get('/math/rectangle/:width/:height', (req, res) => {
+  const width = Number(req.params.width);
+  const height = Number(req.params.height);
+
+  if(isNaN(width) || isNaN(height) || width <= 0 || height <= 0){
+    return res.status(400).json({error: "Wartości boków muszą być dodatnie"})
+  }
+  
+  const result = {
+    area: width * height,
+    perimeter: 2 * width + 2 * height
+  }
+  res.json(result);
+});
+
 
 
 //TODO3
